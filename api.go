@@ -3,16 +3,12 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"grpc/types"
 	"math/rand"
 	"net/http"
 )
 
 type APIFunc func(context.Context, http.ResponseWriter, *http.Request) error
-
-type PriceResponse struct {
-	Ticker string  `json:ticker`
-	Price  float64 `json:price`
-}
 
 type JSONServer struct {
 	listenAddr string
@@ -50,7 +46,7 @@ func (s *JSONServer) handleFetchPrice(ctx context.Context, w http.ResponseWriter
 		return err
 	}
 
-	priceResp := PriceResponse{
+	priceResp := types.PriceResponse{
 		Price:  price,
 		Ticker: ticker,
 	}

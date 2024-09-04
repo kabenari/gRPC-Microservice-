@@ -1,5 +1,5 @@
-build:
-	go build -o bin/priceFetcher
-
 run: build
 	./bin/priceFetcher
+
+build:
+	go build -o bin/priceFetcher
